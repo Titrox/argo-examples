@@ -3,7 +3,7 @@ kind: Application
 
 metadata:
   name: guestbook
-  namespace: applications
+  namespace: application
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 
@@ -19,3 +19,4 @@ spec:
   syncPolicy:
     automated:
       prune: true
+      createNamespace: true
