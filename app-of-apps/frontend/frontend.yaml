@@ -13,8 +13,8 @@ spec:
     path: app-of-apps/frontend
     helm:
       valueFiles:
-        - ../app-of-apps/frontend/values.yaml
-        - ../app-of-apps/frontend/values-dev.yaml
+        - ../frontend/values.yaml
+        - ../frontend/values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: frontend
