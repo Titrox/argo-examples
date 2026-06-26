@@ -12,7 +12,7 @@ spec:
   source:
     repoURL: https://github.com/Titrox/argo-examples
     targetRevision: HEAD
-    path: app-of-apps/root
+    path: app-of-apps
     directory:
       recurse: true
       include: '*.yaml'
