@@ -10,14 +10,11 @@ spec:
   source:
     repoURL: https://github.com/Titrox/argo-examples
     targetRevision: HEAD
-    path: helm-webapp
+    path: app-of-apps/frontend
     helm:
-      values: |
-        appName: frontend
-        configmap:
-          name: frontend-configmap-v1
-          data:
-            CUSTOM_HEADER: 'Frontend service'
+      valueFiles:
+        - values.yaml
+        - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: frontend
