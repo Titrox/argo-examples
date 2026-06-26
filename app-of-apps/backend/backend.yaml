@@ -10,14 +10,11 @@ spec:
   source:
     repoURL: https://github.com/Titrox/argo-examples
     targetRevision: HEAD
-    path: helm-webapp
+    path: app-of-apps/backend
     helm:
-      values: |
-        appName: backend
-        configmap:
-          name: backend-configmap-v1
-          data:
-            CUSTOM_HEADER: 'Backend service'
+      valueFiles:
+        - values.yaml
+        - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: backend
