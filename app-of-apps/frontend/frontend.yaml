@@ -10,11 +10,11 @@ spec:
   source:
     repoURL: https://github.com/Titrox/argo-examples
     targetRevision: HEAD
-    path: app-of-apps/frontend
+    path: helm-webapp
     helm:
       valueFiles:
         - values.yaml
-        - values-dev.yaml
+        - ../app-of-apps/frontend/values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: frontend

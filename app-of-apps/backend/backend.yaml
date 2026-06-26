@@ -13,8 +13,8 @@ spec:
     path: app-of-apps/backend
     helm:
       valueFiles:
-        - values.yaml
-        - values-dev.yaml
+        - ../app-of-apps/backend/values.yaml
+        - ../app-of-apps/backend/values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: backend
