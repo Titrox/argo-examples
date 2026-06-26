@@ -1,21 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
-
 metadata:
-  name: application
+  name: app-of-apps
   namespace: application
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-
 spec:
-  destination:
-    namespace: applications
-    server: https://kubernetes.default.svc
   project: default
   source:
-    path: frontend
-    repoURL: https://github.com/Titrox/argo-examples/app-of-apps
+    repoURL: https://github.com/Titrox/argo-examples
     targetRevision: HEAD
+    path: ./app-of-apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
+      selfHeal: true
