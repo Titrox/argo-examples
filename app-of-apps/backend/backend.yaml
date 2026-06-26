@@ -1,9 +1,7 @@
-# apps/root/application.yaml
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: root
+  name: backend
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,14 +10,17 @@ spec:
   source:
     repoURL: https://github.com/Titrox/argo-examples
     targetRevision: HEAD
-    path: app-of-apps
-    directory:
-      recurse: true
-      include: '*.yaml'
-      exclude: '{root/*,*/Chart.yaml,*/values*.yaml}'
+    path: helm-webapp
+    helm:
+      values: |
+        appName: backend
+        configmap:
+          name: backend-configmap-v1
+          data:
+            CUSTOM_HEADER: 'Backend service'
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: backend
   syncPolicy:
     automated:
       prune: true
