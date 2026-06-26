@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
-  namespace: application
+  namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/Titrox/argo-examples
     targetRevision: HEAD
-    path: ./app-of-apps/frontend/application
+    path: ./app-of-apps/frontend
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
