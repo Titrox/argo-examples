@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Titrox/argo-examples
     targetRevision: HEAD
-    path: ./app-of-apps/frontend
+    path: ./app-of-apps/application
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
