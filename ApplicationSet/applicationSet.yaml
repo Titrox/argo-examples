@@ -5,27 +5,29 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - git: 
+    - git:
         repoURL: https://github.com/Titrox/argo-examples
         revision: HEAD
         directories:
-          paths:
-            - ApplicationSet/apps/*
-
-template:
-  metadata:
-    name: '{{app.name}}'
-    namespace: '{{app.namespace}}'
-
-  spec:
-    project: default
-    source:
-      repoURL: https://github.com/Titrox/argo-examples
-      targetRevision: HEAD
-      path: 'app-of-apps/apps/{{app.name}}'
-      helm:
-        valueFiles:
-          - values.yaml
-  destination:
-      server: https://kubernetes.default.svc
-      namespace: '{{app.name}}'
+          - path: 'ApplicationSet/apps/*'
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Titrox/argo-examples
+        targetRevision: HEAD
+        path: '{{path}}'
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
