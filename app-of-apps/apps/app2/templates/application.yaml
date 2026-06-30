@@ -13,9 +13,8 @@ spec:
     path: {{ .Values.source.path }}
     helm:
       valueFiles:
-        {{- range .Values.source.helm.valueFiles }}
-        - {{ . }}
-        {{- end }}
+        - Chart.yaml
+        - values.yaml
   destination:
     server: {{ .Values.destination.server }}
     namespace: {{ .Values.destination.namespace }}
