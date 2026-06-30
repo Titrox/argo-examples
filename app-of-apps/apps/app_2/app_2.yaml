@@ -17,7 +17,7 @@ spec:
         - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: frontend
+    namespace: app2
   syncPolicy:
     automated:
       prune: true
