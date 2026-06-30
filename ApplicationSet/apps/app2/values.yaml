@@ -5,7 +5,7 @@ app:
 source:
   repoURL: https://github.com/Titrox/argo-examples
   targetRevision: HEAD
-  path: app-of-apps/apps/app2
+  path: ApplicationSet/apps/app2
   helm:
     valueFiles:
       - values.yaml
