@@ -3,17 +3,20 @@ kind: ApplicationSet
 metadata:
   name: application-set
   namespace: argocd
-generators:
-  - git: 
-      repoURL: https://github.com/Titrox/argo-examples
-      revision: HEAD
-      directories:
-        paths:
-          - ApplicationSet/apps/*
+spec:
+  generators:
+    - git: 
+        repoURL: https://github.com/Titrox/argo-examples
+        revision: HEAD
+        directories:
+          paths:
+            - ApplicationSet/apps/*
+
 template:
   metadata:
     name: '{{app.name}}'
     namespace: '{{app.namespace}}'
+
   spec:
     project: default
     source:
