@@ -1,0 +1,5 @@
+apiVersion: v2
+name: app3
+description: ArgoCD Application Chart for app2
+type: application
+version: 0.1.0

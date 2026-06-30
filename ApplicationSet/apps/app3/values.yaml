@@ -1,0 +1,18 @@
+app:
+  name: app2
+  namespace: argocd
+
+source:
+  repoURL: https://github.com/Titrox/argo-examples
+  targetRevision: HEAD
+  path: ApplicationSet/apps/app2
+
+destination:
+  server: https://kubernetes.default.svc
+  namespace: app3
+project: default
+
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
