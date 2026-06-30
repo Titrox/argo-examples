@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: application-set
+  namespace: argocd
+generators:
+  - git: 
+      repoURL: https://github.com/Titrox/argo-examples
+      revision: HEAD
+      directories:
+        paths:
+          - ApplicationSet/apps/*
+template:
+  metadata:
+    name: '{{app.name}}'
+    namespace: '{{app.namespace}}'
+  spec:
+    project: default
+    source:
+      repoURL: https://github.com/Titrox/argo-examples
+      targetRevision: HEAD
+      path: 'app-of-apps/apps/{{app.name}}'
+      helm:
+        valueFiles:
+          - values.yaml
+  destination:
+      server: https://kubernetes.default.svc
+      namespace: '{{app.name}}'
