@@ -11,9 +11,6 @@ spec:
     repoURL: {{ .Values.source.repoURL }}
     targetRevision: {{ .Values.source.targetRevision }}
     path: {{ .Values.source.path }}
-    helm:
-      valueFiles:
-        - values.yaml
   destination:
     server: {{ .Values.destination.server }}
     namespace: {{ .Values.destination.namespace }}
