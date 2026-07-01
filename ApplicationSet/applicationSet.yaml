@@ -5,23 +5,34 @@ metadata:
   namespace: argocd
 spec:
   generators:
+      - matrix:
+          generators:
 
-        - git:
-            repoURL: https://github.com/Titrox/argo-examples
-            revision: HEAD
-            directories:
-            - path: 'ApplicationSet/apps/*/values-dev.yaml' # this will match all directories under apps that contain a values-dev.yaml file, applicationSet will ONLY manage dev environment
+          - list:
+              elements:
+                - env: dev
+                  namespace: dev
+                - env: nonprod
+                  namespace: nonprod
+                - env: prod
+                  namespace: prod
+
+          - git:
+              repoURL: https://github.com/Titrox/argo-examples
+              revision: HEAD
+              directories:
+              - path: 'ApplicationSet/apps/*/values-dev.yaml' # this will match all directories under apps that contain a values-dev.yaml file, applicationSet will ONLY manage dev environments
 
   template:
     metadata:
-      name: '{{path.basename}}-dev'
+      name: '{{path.basename}}-{{env}}'
     spec:
       source:
         path: '{{path}}'
         helm:
           valueFiles:
             - values.yaml
-            - values-dev.yaml
+            - values-{{env}}.yaml 
         
         repoURL: https://github.com/Titrox/argo-examples
       
