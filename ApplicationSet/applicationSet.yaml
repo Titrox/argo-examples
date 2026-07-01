@@ -4,23 +4,24 @@ metadata:
   name: application-set
   namespace: argocd
 spec:
-  matrix:
-    generators:
+  generators:
+    - matrix:
+      generators:
 
-    - list:
-        elements:
-          - env: dev
-            namespace: dev
-          - env: nonprod
-            namespace: nonprod
-          - env: prod
-            namespace: prod
+      - list:
+          elements:
+            - env: dev
+              namespace: dev
+            - env: nonprod
+              namespace: nonprod
+            - env: prod
+              namespace: prod
 
-    - git:
-        repoURL: https://github.com/Titrox/argo-examples
-        revision: HEAD
-        directories:
-          - path: 'ApplicationSet/apps/*'
+      - git:
+          repoURL: https://github.com/Titrox/argo-examples
+          revision: HEAD
+          directories:
+            - path: 'ApplicationSet/apps/*'
 
   template:
     metadata:
