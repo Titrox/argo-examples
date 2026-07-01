@@ -35,7 +35,8 @@ spec:
             - values-{{env}}.yaml 
         
         repoURL: https://github.com/Titrox/argo-examples
-        project: default
+      
+      project: default
 
       destination:
         namespace: '{{namespace}}'
