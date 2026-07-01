@@ -21,7 +21,7 @@ spec:
               repoURL: https://github.com/Titrox/argo-examples
               revision: HEAD
               directories:
-              - path: 'ApplicationSet/apps/*/values-dev.yaml' # this will match all directories under apps that contain a values-dev.yaml file, applicationSet will ONLY manage dev environments
+                - path: 'ApplicationSet/apps/*'
 
   template:
     metadata:
