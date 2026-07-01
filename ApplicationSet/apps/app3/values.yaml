@@ -1,11 +1,11 @@
 app:
-  name: app2
+  name: app3
   namespace: argocd
 
 source:
   repoURL: https://github.com/Titrox/argo-examples
   targetRevision: HEAD
-  path: ApplicationSet/apps/app2
+  path: ApplicationSet/apps/app3
 
 destination:
   server: https://kubernetes.default.svc

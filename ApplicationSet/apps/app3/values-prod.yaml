@@ -1,0 +1,3 @@
+app:
+  name: app3-prod
+  namespace: argocd
